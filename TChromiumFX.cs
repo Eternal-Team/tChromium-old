@@ -144,6 +144,8 @@ namespace TChromiumFX
 
 			InputInterceptor.OnKeyChar += (key, modifiers) =>
 			{
+				if (key == (int)Utility.Keys.LMenu || key == (int)Utility.Keys.RMenu) return;
+
 				CfxKeyEvent keyEvent = new CfxKeyEvent
 				{
 					WindowsKeyCode = key,
@@ -157,6 +159,8 @@ namespace TChromiumFX
 			};
 			InputInterceptor.OnKeyDown += (key, modifiers, systemKey) =>
 			{
+				if (key == (int)Utility.Keys.LMenu || key == (int)Utility.Keys.RMenu) return;
+
 				CfxKeyEvent keyEvent = new CfxKeyEvent
 				{
 					WindowsKeyCode = key,
@@ -170,6 +174,8 @@ namespace TChromiumFX
 			};
 			InputInterceptor.OnKeyUp += (key, modifiers, systemKey) =>
 			{
+				if (key == (int)Utility.Keys.LMenu || key == (int)Utility.Keys.RMenu) return;
+
 				CfxKeyEvent keyEvent = new CfxKeyEvent
 				{
 					WindowsKeyCode = key,
@@ -193,10 +199,7 @@ namespace TChromiumFX
 		{
 			int HotbarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Hotbar"));
 
-			if (HotbarIndex != -1 && GUI != null && !Main.ingameOptionsWindow)
-			{
-				layers.Insert(HotbarIndex + 1, GUI.InterfaceLayer);
-			}
+			if (HotbarIndex != -1 && GUI != null && !Main.ingameOptionsWindow) layers.Insert(HotbarIndex + 1, GUI.InterfaceLayer);
 			else FocusedBrowser = null;
 		}
 
